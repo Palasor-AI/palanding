@@ -1,0 +1,36 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
+  "serverInfo": {
+    "name": "Palasor Landing Public Discovery",
+    "version": "1.0.0"
+  },
+  "description": "Informational discovery card for Palasor's public landing page. No remote MCP transport or authenticated tools are exposed in this version.",
+  "transport": {
+    "type": "none",
+    "endpoint": "https://palasor.com/",
+    "description": "No MCP server transport is available for this landing-only release."
+  },
+  "capabilities": {
+    "tools": false,
+    "resources": [
+      {
+        "name": "Italian landing summary",
+        "uri": "https://palasor.com/index.md",
+        "mimeType": "text/markdown"
+      },
+      {
+        "name": "English landing summary",
+        "uri": "https://palasor.com/en/index.md",
+        "mimeType": "text/markdown"
+      },
+      {
+        "name": "Sitemap",
+        "uri": "https://palasor.com/sitemap.xml",
+        "mimeType": "application/xml"
+      }
+    ]
+  },
+  "contact": {
+    "email": "hello@palasor.com"
+  }
+}

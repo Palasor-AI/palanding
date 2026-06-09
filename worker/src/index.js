@@ -135,15 +135,20 @@ Palasor is an app for keeping social life active: it plans nights out with frien
 This is a public landing page. No public APIs, OAuth discovery, or authenticated agent endpoints are published in this version.
 `;
 
-const PALASOR_PUBLIC_SKILL_MD = `# Palasor Public Landing Skill
+const PALASOR_PUBLIC_SKILL_MD = `---
+name: palasor-public-landing
+description: Use Palasor's public landing page to understand the app and open unauthenticated app download, legal, and summary links.
+---
 
-Use this public skill to understand and navigate Palasor's unauthenticated landing page.
+# Palasor Public Landing
+
+Use this skill when an agent needs to understand or navigate Palasor's public, unauthenticated landing page.
 
 ## Purpose
 
 Palasor helps people keep their social life active by planning nights out with friends, finding real connections nearby, and keeping relationships alive.
 
-## Public actions
+## Public Actions
 
 - Open the Italian landing page: ${BASE_URL}/
 - Open the English landing page: ${BASE_URL}/en/
@@ -151,21 +156,24 @@ Palasor helps people keep their social life active by planning nights out with f
 - Open the Google Play listing: ${GOOGLE_PLAY_URL}
 - Read the Italian markdown summary: ${BASE_URL}/index.md
 - Read the English markdown summary: ${BASE_URL}/en/index.md
+- Read the Privacy Policy: ${BASE_URL}/privacy/
+- Read the Cookie Policy: ${BASE_URL}/cookie/
+- Read the Terms and Conditions: ${BASE_URL}/terms-conditions/
 
 ## Boundaries
 
-This skill is informational only. It does not expose authenticated actions, account access, private user data, API calls, OAuth flows, payments, or commerce operations.
+This skill is informational only. It does not expose authenticated actions, account access, private user data, API calls, OAuth flows, payments, commerce operations, MCP transports, or A2A services.
 `;
 
 const AGENT_SKILLS_INDEX = {
-  "$schema": "https://agentskills.io/schemas/agent-skills-index-v0.2.0.json",
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   skills: [
     {
       name: "palasor-public-landing",
-      type: "markdown",
-      description: "Public, unauthenticated navigation and summary skill for the Palasor landing page.",
-      url: `${BASE_URL}/.well-known/agent-skills/palasor-public.md`,
-      sha256: "b1a7016b6dddace24e56cae01d05abc4a47a8ce6be378dae1618ecb34149fdea"
+      type: "skill-md",
+      description: "Use Palasor's public landing page to understand the app and open unauthenticated app download, legal, and summary links.",
+      url: `${BASE_URL}/.well-known/agent-skills/palasor-public-landing/SKILL.md`,
+      digest: "sha256:ca5a53d5561e1acbf55a5599cd32e8fe45247a10c3ef1c6e9d149272477155d6"
     }
   ]
 };
@@ -222,7 +230,7 @@ const HOME_LINKS = [
   `</sitemap.xml>; rel="sitemap"; type="application/xml"`,
   `</index.md>; rel="alternate"; type="text/markdown"; hreflang="it"`,
   `</en/index.md>; rel="alternate"; type="text/markdown"; hreflang="en"`,
-  `</.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json"`,
+  `</.well-known/agent-skills/index.json>; rel="agent-skills"; type="application/json"`,
   `</.well-known/mcp/server-card.json>; rel="service-desc"; type="application/json"`
 ];
 
@@ -260,7 +268,7 @@ function getStaticResponse(pathname, method) {
       return markdownResponse(EN_INDEX_MD, method);
     case "/.well-known/agent-skills/index.json":
       return jsonResponse(AGENT_SKILLS_INDEX, method);
-    case "/.well-known/agent-skills/palasor-public.md":
+    case "/.well-known/agent-skills/palasor-public-landing/SKILL.md":
       return markdownResponse(PALASOR_PUBLIC_SKILL_MD, method);
     case "/.well-known/mcp/server-card.json":
     case "/.well-known/mcp.json":
@@ -323,7 +331,8 @@ function textResponse(body, contentType, method) {
     status: 200,
     headers: {
       "Content-Type": contentType,
-      "Cache-Control": "public, max-age=600"
+      "Cache-Control": "public, max-age=600",
+      "Access-Control-Allow-Origin": "*"
     }
   });
 }
@@ -334,6 +343,7 @@ function markdownResponse(body, method) {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "Cache-Control": "public, max-age=600",
+      "Access-Control-Allow-Origin": "*",
       "Vary": "Accept",
       "X-Markdown-Tokens": String(Math.ceil(body.length / 4))
     }
@@ -345,7 +355,8 @@ function jsonResponse(value, method) {
     status: 200,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "public, max-age=600"
+      "Cache-Control": "public, max-age=600",
+      "Access-Control-Allow-Origin": "*"
     }
   });
 }

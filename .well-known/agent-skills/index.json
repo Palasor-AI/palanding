@@ -1,12 +1,12 @@
 {
-  "$schema": "https://agentskills.io/schemas/agent-skills-index-v0.2.0.json",
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "skills": [
     {
       "name": "palasor-public-landing",
-      "type": "markdown",
-      "description": "Public, unauthenticated navigation and summary skill for the Palasor landing page.",
-      "url": "https://palasor.com/.well-known/agent-skills/palasor-public.md",
-      "sha256": "b1a7016b6dddace24e56cae01d05abc4a47a8ce6be378dae1618ecb34149fdea"
+      "type": "skill-md",
+      "description": "Use Palasor's public landing page to understand the app and open unauthenticated app download, legal, and summary links.",
+      "url": "https://palasor.com/.well-known/agent-skills/palasor-public-landing/SKILL.md",
+      "digest": "sha256:ca5a53d5561e1acbf55a5599cd32e8fe45247a10c3ef1c6e9d149272477155d6"
     }
   ]
 }

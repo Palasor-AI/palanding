@@ -4,13 +4,20 @@ This Worker fronts the existing GitHub Pages site and adds agent discovery behav
 
 ## Required Cloudflare DNS
 
-Before deploying the route `palasor.com/*`, create this DNS-only origin record in the `palasor.com` zone:
+Before the route `palasor.com/*` can run, `palasor.com` must be an active Cloudflare zone with the production hostname proxied through Cloudflare.
+
+Create or verify these DNS records:
 
 ```text
+palasor.com                  CNAME  palasor-ai.github.io    Proxied
+www.palasor.com              CNAME  palasor-ai.github.io    Proxied
 origin-palasor.palasor.com CNAME palasor-ai.github.io
+_index._agents.palasor.com   HTTPS  1 palasor.com alpn="h3,h2" port=443 mandatory="alpn,port"
 ```
 
-The Worker fetches `https://palasor.com/...` with `resolveOverride` set to `origin-palasor.palasor.com`. This keeps the `Host` header as `palasor.com` for GitHub Pages while avoiding a Worker self-fetch loop after the zone is proxied through Cloudflare.
+Use DNS-only for `origin-palasor.palasor.com`. The apex record must be proxied so Cloudflare can route `palasor.com/*` to the Worker; the Worker fetches GitHub Pages through `origin-palasor.palasor.com`.
+
+After Cloudflare assigns authoritative nameservers, update the domain at the registrar. Then enable DNSSEC in Cloudflare and publish the DS record at the registrar.
 
 ## Commands
 
@@ -29,5 +36,9 @@ curl -i https://palasor.com/sitemap.xml
 curl -i -H 'Accept: text/markdown' https://palasor.com/
 curl -I https://palasor.com/
 curl -i https://palasor.com/.well-known/agent-skills/index.json
+curl -i https://palasor.com/.well-known/agent-skills/palasor-public-landing/SKILL.md
 curl -i https://palasor.com/.well-known/mcp/server-card.json
+curl -i https://palasor.com/.well-known/mcp.json
+dig +short HTTPS _index._agents.palasor.com
+dig +short DS palasor.com
 ```
