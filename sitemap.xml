@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://palasor.com/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://palasor.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://palasor.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://palasor.com/" />
+  </url>
+  <url>
+    <loc>https://palasor.com/en/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://palasor.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://palasor.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://palasor.com/" />
+  </url>
+  <url>
+    <loc>https://palasor.com/privacy/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://palasor.com/cookie/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://palasor.com/terms-conditions/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://palasor.com/terms-conditions/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://palasor.com/en/terms-conditions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://palasor.com/terms-conditions/" />
+  </url>
+  <url>
+    <loc>https://palasor.com/en/terms-conditions/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://palasor.com/terms-conditions/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://palasor.com/en/terms-conditions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://palasor.com/terms-conditions/" />
+  </url>
+</urlset>

@@ -865,6 +865,63 @@
     });
   }, { threshold: 0.10 });
   document.querySelectorAll('.feat-card').forEach(c => cio.observe(c));
+
+  // WebMCP public landing actions, registered only in supporting browsers.
+  (() => {
+    const modelContext = navigator.modelContext;
+    if (!modelContext || typeof modelContext.provideContext !== 'function') return;
+
+    const appStoreUrl = 'https://apps.apple.com/us/app/palasor/id6743174968';
+    const googlePlayUrl = 'https://play.google.com/store/apps/details?id=it.redrop.app';
+    const summary = {
+      name: 'Palasor',
+      language: 'it',
+      description: 'Palasor organizza serate con i tuoi amici, trova connessioni reali vicino a te e tiene vive le tue relazioni.',
+      links: {
+        homepage: 'https://palasor.com/',
+        markdown: 'https://palasor.com/index.md',
+        appStore: appStoreUrl,
+        googlePlay: googlePlayUrl
+      }
+    };
+
+    const emptySchema = { type: 'object', properties: {}, additionalProperties: false };
+
+    try {
+      modelContext.provideContext({
+        name: 'palasor-landing',
+        description: 'Azioni pubbliche per la landing page Palasor.',
+        tools: [
+          {
+            name: 'open_app_store',
+            description: 'Apri la pagina Palasor su App Store.',
+            inputSchema: emptySchema,
+            execute: async () => {
+              window.open(appStoreUrl, '_blank', 'noopener');
+              return { url: appStoreUrl };
+            }
+          },
+          {
+            name: 'open_google_play',
+            description: 'Apri la pagina Palasor su Google Play.',
+            inputSchema: emptySchema,
+            execute: async () => {
+              window.open(googlePlayUrl, '_blank', 'noopener');
+              return { url: googlePlayUrl };
+            }
+          },
+          {
+            name: 'get_landing_summary',
+            description: 'Restituisci un riassunto pubblico della landing Palasor.',
+            inputSchema: emptySchema,
+            execute: async () => summary
+          }
+        ]
+      });
+    } catch (error) {
+      console.warn('Palasor WebMCP registration skipped', error);
+    }
+  })();
 </script>
 
 </body>

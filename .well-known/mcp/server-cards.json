@@ -1,0 +1,10 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-cards.json",
+  "servers": [
+    {
+      "url": "https://palasor.com/.well-known/mcp/server-card.json",
+      "name": "Palasor Landing Public Discovery",
+      "description": "Informational discovery card for Palasor's public landing page."
+    }
+  ]
+}

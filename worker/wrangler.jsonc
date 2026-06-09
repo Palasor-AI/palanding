@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "palasor-agent-ready",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-09",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "palasor.com/*",
+      "zone_name": "palasor.com"
+    }
+  ],
+  "vars": {
+    "ORIGIN_HOSTNAME": "palasor.com",
+    "ORIGIN_RESOLVE_OVERRIDE": "origin-palasor.palasor.com"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1
+  }
+}

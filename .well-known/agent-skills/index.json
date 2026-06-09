@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agentskills.io/schemas/agent-skills-index-v0.2.0.json",
+  "skills": [
+    {
+      "name": "palasor-public-landing",
+      "type": "markdown",
+      "description": "Public, unauthenticated navigation and summary skill for the Palasor landing page.",
+      "url": "https://palasor.com/.well-known/agent-skills/palasor-public.md",
+      "sha256": "b1a7016b6dddace24e56cae01d05abc4a47a8ce6be378dae1618ecb34149fdea"
+    }
+  ]
+}
